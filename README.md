@@ -1,3 +1,17 @@
+# Risk to Reward Calculator & Trading Journey
+
+Current first steps
+- created app and comoponents
+- implement Tailwind framework - dark and light mode can be already be used
+
+## Todo
+Next steps
+- better design
+- output RR calculation
+
+---
+## Next.js
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
