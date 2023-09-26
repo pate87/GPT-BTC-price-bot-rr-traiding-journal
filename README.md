@@ -4,10 +4,13 @@ Current first steps
 - created app and comoponents
 - implement Tailwind framework - dark and light mode can be already be used
 
-## Todo
+# Done
 Next steps
-- better design
 - output RR calculation
+
+# To Do
+- better Tailwind design
+- implement traiding journey
 
 ---
 ## Next.js
