@@ -25,6 +25,25 @@ export const BinancePriceStream = () => {
 
   const [message, setMessage] = useState<Message | null>(null);
   const [priceReport, setPriceReport] = useState<string | null>(null);
+  const [userInput, setUserInput] = useState<string | null>(null);
+
+
+  const handleSubmit = async () => {
+    if (userInput.toLowerCase().includes("btc price")) {
+      // Make the API call here
+      const response = fetch('/api/generateReport', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: message }), // Current message from Streamr
+      })
+
+      const data = await response.json();
+      setPriceReport(data.priceReport);
+    }
+  };
+
 
   /**
    * Initialize StreamrClient and subscribtion
@@ -71,54 +90,19 @@ export const BinancePriceStream = () => {
     );
   }
 
-  /**
-   * Import Open AI function
-   */
-
-  useEffect(() => {
-
-    fetch('/api/generateReport', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: message }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        setPriceReport(data.priceReport);
-      });
-
-  }, [message]); // This effect will run whenever 'message' changes
-
-
   return (
     <div>
-      {message ? (
-        <div>
-          <p>Price Change: {message.priceChange}</p>
-          <p>Price Change Percentage: {message.priceChangePercent}</p>
-          <p>Weighted Average Price: {message.weightedAveragePrice}</p>
-          <p>Previous Close Price: {message.previousClose}</p>
-          <p>Current Close Price: {message.currentClose}</p>
-          <p>Close Quantity: {message.closeQuantity}</p>
-          <p>Best Bid: {message.bestBid}</p>
-          <p>Best Bid Quantity: {message.bestBidQuantity}</p>
-          <p>Best Ask Price: {message.bestAskPrice}</p>
-          <p>Best Ask Quantity: {message.bestAskQuantity}</p>
-          <p>Open Price: {message.open}</p>
-          <p>Highest Close Price: {message.high}</p>
-          <p>Lowest Close Price: {message.low}</p>
-          <p>Base Asset Volume: {message.baseAssetVolume}</p>
-          <p>Quote Asset Volume: {message.quoteAssetVolume}</p>
-          <p>Trades: {message.trades}</p>
-        </div>
-      ) : (
-        <p>No message yet</p>
-      )}
       <div>
         {priceReport ? <p>{priceReport}</p> : <p>No report yet</p>}
       </div>
+      <input
+        className='text-black'
+        type="text"
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        placeholder="Ask about BTC price"
+      />
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 
