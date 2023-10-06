@@ -10,7 +10,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
           <h1 className="text-2xl font-bold mb-4">BTC Price Stream</h1>
           </a>
         </div>
-        <ul className="list-none items-center m-0 p-0 flex">
+        <ul className="list-none  m-0 p-0 flex">
             <li className="ml-4">
                 <Link className="text-white" href="/PriceGPT">
                   Prise GPT
