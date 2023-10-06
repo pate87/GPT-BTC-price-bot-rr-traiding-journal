@@ -61,34 +61,64 @@ const RiskToRewardCalculator: React.FC = () => {
   }
 
   return (
-    <div className="text-center text-xl p-4 text-black dark:text-white">
+    <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-md w-full max-w-md mx-auto mt-10">
+    <h1 className="text-2xl font-semibold text-center mb-4 text-black dark:text-white">Risk to Reward Calculator</h1>
+    <div className="space-y-4">
+      <div>
+        <label className="text-black dark:text-white" htmlFor="accountValue">Account Value %:</label>
+        <input 
+          id="accountValue"
+          className="w-full p-2 mt-2 rounded border dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+          type="number" 
+          placeholder="Account Value %" 
+          onChange={handleAccountValue} 
+        />
+      </div>
+      <div>
+        <label className="text-black dark:text-white" htmlFor="entryPrice">Entry Price:</label>
+        <input 
+          id="entryPrice"
+          className="w-full p-2 mt-2 rounded border dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+          type="number" 
+          placeholder="Entry Price" 
+          onChange={handleSetEntryPrice} 
+        />
+      </div>
+      <div>
+        <label className="text-black dark:text-white" htmlFor="stopLossPrice">Stop Loss Price:</label>
+        <input 
+          id="stopLossPrice"
+          className="w-full p-2 mt-2 rounded border dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+          type="number" 
+          placeholder="Stop Loss Price" 
+          onChange={handleStopLossPrice} 
+        />
+      </div>
+      <div>
+        <label className="text-black dark:text-white" htmlFor="takeProfitPrice">Take Profit Price:</label>
+        <input 
+          id="takeProfitPrice"
+          className="w-full p-2 mt-2 rounded border dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+          type="number" 
+          placeholder="Take Profit Price" 
+          onChange={handleTakeProfit} 
+        />
+      </div>
+      <button 
+        className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-400 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+        onClick={calculateRiskToReward}
+      >
+        Calculate SL
+      </button>
+    </div>
+    <div className="mt-6 text-black dark:text-white">
       <p>Account: ${accountValue}</p>
       <p>Use 1 % SL: ${accountPercentValue}</p>
-      <input 
-        className="text-center text-black" 
-        type="number" 
-        placeholder="Account Value %" 
-        onChange={handleAccountValue} />
-      <input 
-        className="text-center text-black" 
-        type="number" 
-        placeholder="Entry Price" 
-        onChange={handleSetEntryPrice} />
-      <input 
-        className="text-center text-black" 
-        type="number" 
-        placeholder="Stop Loss Price" 
-        onChange={handleStopLossPrice} />
-      <input 
-        className="text-center text-black" 
-        type="number" 
-        placeholder="Take Profit Price" 
-        onChange={handleTakeProfit} />
-      <button className='button' onClick={calculateRiskToReward}>Calculate SL</button>
-      {/* Display calculated values here */}
       <p>SL: {calcStopLoss.toFixed(2)}%, ${calcLossDollar.toFixed(2)}</p>
-      <p>TP: {calcTakeProfit.toFixed(2)}% ${calcProfitDollar.toFixed(2)}</p>
+      <p>TP: {calcTakeProfit.toFixed(2)}%, ${calcProfitDollar.toFixed(2)}</p>
     </div>
+  </div>
+  
   );
 };
 
