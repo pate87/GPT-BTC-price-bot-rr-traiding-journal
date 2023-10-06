@@ -28,6 +28,7 @@ export const BinancePriceStream = () => {
   const [userInput, setUserInput] = useState<string | null>(null);
 
 
+
   const handleSubmit = async () => {
     if (userInput.toLowerCase().includes("btc price")) {
       // Make the API call here
@@ -38,12 +39,14 @@ export const BinancePriceStream = () => {
         },
         body: JSON.stringify({ message: message }), // Current message from Streamr
       })
-
-      const data = await response.json();
-      setPriceReport(data.priceReport);
+        .then(response => response.json())
+        .then(data => {
+          setPriceReport(data.priceReport);
+        });
+        return message;
     }
   };
-
+  
 
   /**
    * Initialize StreamrClient and subscribtion
@@ -91,27 +94,34 @@ export const BinancePriceStream = () => {
   }
 
   return (
-    <div style={{ height: 'calc(100vh - 100px)' }} className="flex flex-col justify-end bg-gray-900 bg-gray-100 dark:bg-gray-800">
-     {/* <div className="mt-6"> */}
-      {/* <div className="mt-4"> */}
-        {priceReport ? <p>{priceReport}</p> : <p>No report yet</p>}
-      {/* </div> */}
-    {/* </div> */}
-
-      <div className='flex flex-col justify-around '>
-      <input
-        className="bg-gray-800 p-2 rounded focus:outline-none focus:border-blue-500 dark:bg-gray-200 dark:text-black"
-        type="text"
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-        placeholder="Ask about BTC price"
-      />
-      <button
-      className="bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700"
-       onClick={handleSubmit}>Submit</button>
-      </div>
-      
+    <div className='h-screen'>
+    <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-md w-full max-w-md mx-auto mt-10">
+  <h1 className="text-2xl font-semibold text-center mb-4 text-black dark:text-white">Bitcoin Price Report</h1>
+  <div className="space-y-4">
+    <div className="text-black dark:text-white mb-4">
+      {priceReport ? <p>{priceReport}</p> : <p>No report yet</p>}
     </div>
+    <div>
+      <label className="text-black dark:text-white" htmlFor="btcPriceQuery">Ask about BTC price:</label>
+      <input 
+        id="btcPriceQuery"
+        className="w-full p-2 mt-2 rounded border dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+        type="text" 
+        value={userInput} 
+        onChange={(e) => setUserInput(e.target.value)} 
+        placeholder="Ask about BTC price" 
+      />
+    </div>
+    <button 
+      className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-400 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+      onClick={handleSubmit}
+    >
+      Submit
+    </button>
+  </div>
+</div>
+</div>
+
   );
 
 };
