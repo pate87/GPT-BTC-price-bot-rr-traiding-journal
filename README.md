@@ -1,23 +1,37 @@
-# Risk to Reward Calculator & Trading Journey
+# BTC Price bot and Risk to Reward Calculator
 
-Current first steps
-- created app and comoponents
-- implement Tailwind framework - dark and light mode can be already be used
+This app is a BTC price bot. To ask GPT whether to buy or to sell at the current price with all necessary information.
 
-# Done
-Next steps
-- output RR calculation
+## How to use BTC price bot
 
-# To Do
-- better Tailwind design
-- implement traiding journey
+Simple ask the bot about the btc price and you'll get an answer.
+
+## Risk To Reward
+
+This app has also a Risk To Reward calculator included.
+
+Usually the main problem is how to calculate a SL on the current account value.
+
+I solved this problem.
+
+Just insert your current account value and stops loss and take profit.
+
+The calculator is set to 1% account value and returns the amount to invest to only loss 1% of the account value.
+
+# Technical part
+
+The app is mainly written in Next.js and TypeScript.
+
+## Getting Started
+
+Download the files and run
+`npm install`
+
+Please use the folling manual from Next.js 
+I used `npm run dev`
 
 ---
 ## Next.js
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
 
 First, run the development server:
 
@@ -32,26 +46,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
