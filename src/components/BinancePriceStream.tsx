@@ -91,18 +91,26 @@ export const BinancePriceStream = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div style={{ height: 'calc(100vh - 100px)' }} className="flex flex-col justify-end bg-gray-900 bg-gray-100 dark:bg-gray-800">
+     {/* <div className="mt-6"> */}
+      {/* <div className="mt-4"> */}
         {priceReport ? <p>{priceReport}</p> : <p>No report yet</p>}
-      </div>
+      {/* </div> */}
+    {/* </div> */}
+
+      <div className='flex flex-col justify-around '>
       <input
-        className='text-black'
+        className="bg-gray-800 p-2 rounded focus:outline-none focus:border-blue-500 dark:bg-gray-200 dark:text-black"
         type="text"
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
         placeholder="Ask about BTC price"
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button
+      className="bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:border-blue-700"
+       onClick={handleSubmit}>Submit</button>
+      </div>
+      
     </div>
   );
 
